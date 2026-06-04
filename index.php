@@ -62,13 +62,29 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             scroll-behavior: smooth;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             font-family: var(--font-body);
             background: linear-gradient(135deg, #FFFDF9 0%, #FAF0F2 50%, #F5E3E6 100%);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
             position: relative;
+        }
+
+        /* Background Decor Container to prevent horizontal overflow */
+        .bg-decor-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
         }
 
         /* Decorative Background Ornaments */
@@ -79,7 +95,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             background: radial-gradient(circle, rgba(255,204,213,0.3) 0%, rgba(255,255,255,0) 70%);
             top: -150px;
             right: -100px;
-            z-index: -1;
+            z-index: 1;
             pointer-events: none;
         }
 
@@ -90,7 +106,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             background: radial-gradient(circle, rgba(232,197,200,0.2) 0%, rgba(255,255,255,0) 75%);
             bottom: 20%;
             left: -200px;
-            z-index: -1;
+            z-index: 1;
             pointer-events: none;
         }
 
@@ -1014,9 +1030,11 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
     </style>
 </head>
 <body>
-
-    <div class="decor-blob-1"></div>
-    <div class="decor-blob-2"></div>
+    <!-- Background decorations container to prevent horizontal scroll/whitespaces -->
+    <div class="bg-decor-container">
+        <div class="decor-blob-1"></div>
+        <div class="decor-blob-2"></div>
+    </div>
 
     <!-- Navigation Bar -->
     <header id="navbar">
