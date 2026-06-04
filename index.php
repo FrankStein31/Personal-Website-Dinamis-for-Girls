@@ -312,7 +312,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             max-width: 580px;
         }
 
-        /* Dynamic profile image layout */
+        /* Dynamic profile image layout - Heart Shaped */
         .hero-image-container {
             display: flex;
             justify-content: center;
@@ -320,21 +320,29 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             position: relative;
         }
 
-        .profile-frame {
+        .profile-frame-wrap {
             position: relative;
             width: 380px;
-            height: 480px;
-            border-radius: 50px 15px 50px 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(183, 110, 121, 0.12);
-            border: 5px solid #FFFFFF;
+            aspect-ratio: 1 / 1.13;
+            padding: 6px;
+            background: #FFFFFF;
+            clip-path: url(#heart-clip);
             z-index: 2;
             transition: all 0.5s ease;
+            filter: drop-shadow(0 15px 30px rgba(183, 110, 121, 0.16));
         }
 
-        .profile-frame:hover {
-            transform: scale(1.02);
-            box-shadow: 0 25px 50px rgba(183, 110, 121, 0.18);
+        .profile-frame-wrap:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 20px 40px rgba(183, 110, 121, 0.25));
+        }
+
+        .profile-frame {
+            width: 100%;
+            height: 100%;
+            clip-path: url(#heart-clip);
+            overflow: hidden;
+            background: var(--soft-blush);
         }
 
         .profile-frame img {
@@ -344,7 +352,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             transition: scale 0.5s ease;
         }
 
-        .profile-frame:hover img {
+        .profile-frame-wrap:hover img {
             scale: 1.05;
         }
 
@@ -843,10 +851,8 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 order: -1;
             }
 
-            .profile-frame {
+            .profile-frame-wrap {
                 width: 300px;
-                aspect-ratio: 3 / 3.8;
-                border-radius: 40px 15px 40px 15px;
             }
 
             .blob-backdrop {
@@ -948,9 +954,8 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 line-height: 1.7;
             }
 
-            .profile-frame {
+            .profile-frame-wrap {
                 width: 250px;
-                aspect-ratio: 2.5 / 3.2;
             }
 
             .blob-backdrop {
@@ -1001,9 +1006,8 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 font-size: 1.85rem;
             }
 
-            .profile-frame {
+            .profile-frame-wrap {
                 width: 220px;
-                aspect-ratio: 2.2 / 2.8;
             }
 
             .blob-backdrop {
@@ -1035,6 +1039,15 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
         <div class="decor-blob-1"></div>
         <div class="decor-blob-2"></div>
     </div>
+
+    <!-- SVG Clip Path for Heart Profile Image -->
+    <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+        <defs>
+            <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.5,0.95 C 0.1,0.6 0,0.4 0,0.25 C 0,0.08 0.1,0 0.25,0 C 0.38,0 0.48,0.15 0.5,0.22 C 0.52,0.15 0.62,0 0.75,0 C 0.9,0 1,0.08 1,0.25 C 1,0.4 0.9,0.6 0.5,0.95 Z" />
+            </clipPath>
+        </defs>
+    </svg>
 
     <!-- Navigation Bar -->
     <header id="navbar">
@@ -1100,16 +1113,18 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 
                 <div class="hero-image-container" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <div class="blob-backdrop"></div>
-                    <div class="profile-frame">
-                        <?php if (!empty($photo) && file_exists(__DIR__ . '/files/' . $photo)): ?>
-                            <img src="files/<?= htmlspecialchars($photo) ?>" alt="Heidy Portrait Portrait">
-                        <?php else: ?>
-                            <!-- Fallback premium illustration if image is missing -->
-                            <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 30% 20%, #FAF0F2 0%, #E8C5C8 100%); color: var(--rose-gold); font-size: 3rem;">
-                                <i class="fa-solid fa-crown" style="margin-bottom: 10px;"></i>
-                                <span style="font-size: 0.95rem; font-family: var(--font-body); font-weight: 500; text-transform: uppercase; letter-spacing: 2px;">Premium Portfolio</span>
-                            </div>
-                        <?php endif; ?>
+                    <div class="profile-frame-wrap">
+                        <div class="profile-frame">
+                            <?php if (!empty($photo) && file_exists(__DIR__ . '/files/' . $photo)): ?>
+                                <img src="files/<?= htmlspecialchars($photo) ?>" alt="Heidy Portrait">
+                            <?php else: ?>
+                                <!-- Fallback premium illustration if image is missing -->
+                                <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 30% 20%, #FAF0F2 0%, #E8C5C8 100%); color: var(--rose-gold); font-size: 3rem;">
+                                    <i class="fa-solid fa-crown" style="margin-bottom: 10px;"></i>
+                                    <span style="font-size: 0.95rem; font-family: var(--font-body); font-weight: 500; text-transform: uppercase; letter-spacing: 2px;">Premium Portfolio</span>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
