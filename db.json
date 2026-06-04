@@ -1,0 +1,14 @@
+{
+    "biodata": {
+        "name": "",
+        "role": "",
+        "description": "",
+        "photo": ""
+    },
+    "experiences": [],
+    "certificates": [],
+    "social_media": [],
+    "admin": {
+        "password": "password"
+    }
+}
