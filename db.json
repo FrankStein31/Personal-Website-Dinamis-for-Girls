@@ -1,53 +1,61 @@
 {
     "biodata": {
-        "name": "Heidy",
-        "role": "Dev",
-        "description": "Coba",
-        "photo": "6a2179d19c2da.png"
+        "name": "Heidy Stein",
+        "role": "Creative UI\/UX Designer & Web Developer",
+        "description": "I am a passionate creator who blends aesthetics with code to build memorable digital experiences. Specializing in elegant frontend interfaces, high-end branding, and robust backend logic. Let's create something beautiful together.",
+        "photo": "6a217ff5335a9.png"
     },
     "experiences": [
         {
-            "id": "6a2179e682f5f",
-            "company": "Polinema",
-            "position": "Anggota",
-            "year": "2021",
-            "description": "wasd"
+            "id": "6a217eb1befe2",
+            "company": "Aura Creative Studio",
+            "position": "Lead Frontend Developer",
+            "year": "2024 - Present",
+            "description": "Crafting immersive, high-end web experiences, interactive portfolios, and digital brand identities using modern technologies."
         },
         {
-            "id": "6a2179f30015e",
-            "company": "wasd",
-            "position": "wasd",
-            "year": "3121",
-            "description": "wasdawsd\r\n"
+            "id": "6a217eb1bf1e2",
+            "company": "Innovatech Solutions",
+            "position": "Junior Web Developer",
+            "year": "2022 - 2024",
+            "description": "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
         }
     ],
     "certificates": [
         {
-            "id": "6a217a162fe2d",
-            "name": "FRANKIE STEINLIE",
-            "issuer": "Politeknik Negeri Malang",
-            "file": "6a217a162eab9.png"
+            "id": "6a217eb1bf1e7",
+            "name": "Advanced UI\/UX Certification",
+            "issuer": "Design Guild International",
+            "file": "6a2180b5d322b.pdf"
         },
         {
-            "id": "6a217a22273ee",
-            "name": "wasd",
-            "issuer": "wasd",
-            "file": "6a217a2225e7a.pdf"
+            "id": "6a217eb1bf1e9",
+            "name": "Web Application Security Associate",
+            "issuer": "TechAcademy",
+            "file": "6a2180c1572d8.png"
         }
     ],
-    "social_media": [
+    "socmed": [
         {
-            "id": "6a217a458f7c5",
+            "id": "6a217eb1bf1ea",
             "platform": "Instagram",
-            "link": "https:\/\/frankie-steinlie.page.gd\/"
+            "url": "https:\/\/instagram.com\/username",
+            "icon": "fab fa-instagram"
         },
         {
-            "id": "6a217a4d28a88",
+            "id": "6a217eb1bf1eb",
             "platform": "LinkedIn",
-            "link": "https:\/\/frankie-steinlie.page.gd\/"
+            "url": "https:\/\/linkedin.com\/in\/username",
+            "icon": "fab fa-linkedin"
+        },
+        {
+            "id": "6a217eb1bf1ec",
+            "platform": "GitHub",
+            "url": "https:\/\/github.com\/username",
+            "icon": "fab fa-github"
         }
     ],
-    "admin": {
-        "password": "password"
+    "settings": {
+        "password": "$2y$12$st.rV3Vo67DaPgs1f12kHOCX34zoglUmUBftGfzB.PA5mawofpxea"
     }
 }
