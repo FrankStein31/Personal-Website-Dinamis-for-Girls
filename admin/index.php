@@ -260,6 +260,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .back-to-site a:hover {
             color: var(--primary);
         }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            .login-header h1 {
+                font-size: 1.5rem;
+            }
+            .login-header {
+                margin-bottom: 25px;
+            }
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>

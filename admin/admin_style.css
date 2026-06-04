@@ -586,37 +586,6 @@ textarea.form-control {
 
 /* Responsive design for admin */
 @media (max-width: 991px) {
-    .sidebar {
-        width: 80px;
-    }
-    
-    .sidebar-brand h2, 
-    .sidebar-item a span, 
-    .sidebar-footer .btn-logout span {
-        display: none;
-    }
-    
-    .sidebar-brand {
-        justify-content: center;
-        padding: 24px 0;
-    }
-    
-    .sidebar-menu {
-        padding: 16px 8px;
-    }
-    
-    .sidebar-item a {
-        justify-content: center;
-        padding: 12px;
-    }
-    
-    .main-content {
-        margin-left: 80px;
-        padding: 30px 20px;
-    }
-}
-
-@media (max-width: 768px) {
     .admin-mobile-header {
         display: flex;
     }
@@ -694,5 +663,44 @@ textarea.form-control {
 
     .admin-table {
         min-width: 650px;
+    }
+}
+
+@media (max-width: 576px) {
+    .table-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .table-header .btn-primary {
+        justify-content: center;
+    }
+    
+    .admin-table th, .admin-table td {
+        padding: 12px 16px;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+    
+    .stat-info p {
+        font-size: 1.5rem;
+    }
+    
+    .stat-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-preview-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
     }
 }
