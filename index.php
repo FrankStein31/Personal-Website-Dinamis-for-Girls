@@ -1066,7 +1066,6 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                     <?php if (!empty($certificates)): ?>
                         <li><a href="#certificates">Sertifikat</a></li>
                     <?php endif; ?>
-                    <li hidden><a href="admin/index.php" class="btn-admin"><i class="fa-solid fa-user-lock"></i> Admin Panel</a></li>
                 </ul>
 
                 <!-- Mobile Hamburger Toggle -->
@@ -1082,7 +1081,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
         <div class="container">
             <div class="hero-layout">
                 <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
-                    <span class="badge">Selamat Datang</span>
+                    <span class="badge">Personal Website</span>
                     
                     <?php if (!empty($name)): ?>
                         <h1>Hello, I'm <span style="color: var(--rose-gold);"><?= htmlspecialchars($name) ?></span></h1>
