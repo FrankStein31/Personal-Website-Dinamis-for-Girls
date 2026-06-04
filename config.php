@@ -1,5 +1,6 @@
 <?php
 // config.php - Configuration and Core Database Functions
+ob_start();
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -116,7 +117,9 @@ function upload_file($file, $allowed_extensions = ['jpg', 'jpeg', 'png', 'pdf'],
     // Double validation on MIME type to be secure
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime = finfo_file($finfo, $fileTmpPath);
-    finfo_close($finfo);
+    if (is_resource($finfo)) {
+        finfo_close($finfo);
+    }
 
     $allowed_mimes = [
         'image/jpeg', 'image/png', 'image/jpg', 'application/pdf'
