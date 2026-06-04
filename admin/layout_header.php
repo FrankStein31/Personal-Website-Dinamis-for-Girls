@@ -24,11 +24,30 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
 </head>
 <body>
 
+    <!-- Mobile Admin Top Bar -->
+    <div class="admin-mobile-header">
+        <button class="admin-mobile-toggle" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--dark); letter-spacing: 0.5px;">Heidy Admin</span>
+        <div class="admin-profile" style="padding: 4px 10px; margin: 0; box-shadow: none; border: none; background: transparent;">
+            <div class="admin-avatar" style="width: 28px; height: 28px; font-size: 0.8rem; background-color: var(--primary-light); color: var(--primary);">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay Backdrop for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
     <!-- Fixed Sidebar -->
     <aside class="sidebar">
         <div class="sidebar-brand">
             <i class="fa-solid fa-gem"></i>
             <h2>Heidy Portfolio</h2>
+            <button class="sidebar-close-mobile" onclick="toggleSidebar()" style="display: none; background: none; border: none; font-size: 1.25rem; color: var(--text-muted); cursor: pointer; margin-left: auto;">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
         
         <ul class="sidebar-menu">
@@ -82,7 +101,7 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
 
     <!-- Main Content Area -->
     <main class="main-content">
-        <!-- Top bar -->
+        <!-- Top bar (Desktop Header) -->
         <div class="header-top">
             <div class="page-title">
                 <?php if ($active_page == 'dashboard.php'): ?>
@@ -106,7 +125,7 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
                 <?php endif; ?>
             </div>
             
-            <div class="admin-profile">
+            <div class="admin-profile desktop-profile">
                 <div class="admin-avatar">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
@@ -128,3 +147,12 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
                 <div><?= htmlspecialchars($_SESSION['error_msg']); unset($_SESSION['error_msg']); ?></div>
             </div>
         <?php endif; ?>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        }
+    </script>

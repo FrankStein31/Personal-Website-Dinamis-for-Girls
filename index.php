@@ -779,6 +779,28 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             color: #FFFFFF;
         }
 
+        /* Mobile Hamburger Icon Styling */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            cursor: pointer;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 1002;
+        }
+
+        .mobile-nav-toggle:hover {
+            background-color: var(--soft-blush);
+            color: var(--rose-gold);
+        }
+
         /* Responsive Layouts */
         @media (max-width: 991px) {
             .hero-layout {
@@ -792,12 +814,13 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             }
 
             .hero-text h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
 
             .hero-text .description {
                 margin-left: auto;
                 margin-right: auto;
+                font-size: 1rem;
             }
 
             .hero-image-container {
@@ -805,13 +828,15 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             }
 
             .profile-frame {
-                width: 320px;
-                height: 400px;
+                width: 300px;
+                aspect-ratio: 3 / 3.8;
+                border-radius: 40px 15px 40px 15px;
             }
 
             .blob-backdrop {
-                width: 360px;
-                height: 430px;
+                width: 340px;
+                height: 420px;
+                max-width: 110%;
             }
 
             .social-row {
@@ -832,25 +857,158 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             }
         }
 
-        @media (max-width: 576px) {
-            .hero-text h1 {
-                font-size: 2.3rem;
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+
+            .section-header {
+                margin-bottom: 50px;
             }
 
             .section-header h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+
+            .mobile-nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: rgba(255, 253, 249, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                padding: 80px 40px;
+                box-shadow: -10px 0 30px rgba(183, 110, 121, 0.1);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1001;
+                border-left: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li[hidden] {
+                display: block !important;
+                visibility: visible;
+            }
+
+            .btn-admin {
+                width: 100%;
+                text-align: center;
+            }
+
+            .timeline-content {
+                padding: 22px;
+            }
+            
+            .timeline-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text .title {
+                font-size: 1.2rem;
+                margin-bottom: 16px;
+            }
+
+            .hero-text .description {
+                font-size: 0.92rem;
+                line-height: 1.7;
+            }
+
+            .profile-frame {
+                width: 250px;
+                aspect-ratio: 2.5 / 3.2;
+            }
+
+            .blob-backdrop {
+                width: 290px;
+                height: 350px;
+            }
+
+            .social-row {
+                gap: 12px;
+            }
+
+            .social-label {
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 8px;
             }
 
             .cert-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
-            .nav-links {
-                display: none; /* simple display solution for complex nav bar mobile header */
+            .cert-card {
+                padding: 24px;
             }
 
-            .btn-admin-mobile {
-                display: inline-block;
+            .modal-box {
+                border-radius: 20px;
+            }
+
+            .modal-header {
+                padding: 16px 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
+                min-height: 300px;
+            }
+
+            .modal-body iframe, .modal-body object {
+                height: 50vh;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-text h1 {
+                font-size: 1.85rem;
+            }
+
+            .profile-frame {
+                width: 220px;
+                aspect-ratio: 2.2 / 2.8;
+            }
+
+            .blob-backdrop {
+                width: 250px;
+                height: 300px;
+            }
+
+            .timeline-content {
+                padding: 16px;
+                width: calc(100% - 45px);
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                width: 16px;
+                height: 16px;
+                border-width: 3px;
             }
         }
     </style>
@@ -880,10 +1038,10 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                     <li hidden><a href="admin/index.php" class="btn-admin"><i class="fa-solid fa-user-lock"></i> Admin Panel</a></li>
                 </ul>
 
-                <!-- Mobile Admin Button only (hidden in desktop) -->
-                <a href="admin/index.php" class="btn-admin btn-admin-mobile" style="display: none; padding: 6px 14px; font-size: 0.8rem;">
-                    <i class="fa-solid fa-user-lock"></i>
-                </a>
+                <!-- Mobile Hamburger Toggle -->
+                <button class="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
@@ -1126,6 +1284,31 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             if (event.key === 'Escape') {
                 hideDocModal();
             }
+        });
+
+        // Mobile Nav Drawer Toggle
+        function toggleMobileNav() {
+            const navLinks = document.querySelector('.nav-links');
+            const toggleIcon = document.querySelector('.mobile-nav-toggle i');
+            navLinks.classList.toggle('active');
+            
+            if (navLinks.classList.contains('active')) {
+                toggleIcon.className = 'fa-solid fa-xmark';
+            } else {
+                toggleIcon.className = 'fa-solid fa-bars';
+            }
+        }
+
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                const toggleIcon = document.querySelector('.mobile-nav-toggle i');
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    toggleIcon.className = 'fa-solid fa-bars';
+                }
+            });
         });
     </script>
 </body>
