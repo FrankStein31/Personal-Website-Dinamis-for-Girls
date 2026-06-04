@@ -1,13 +1,52 @@
 {
     "biodata": {
-        "name": "",
-        "role": "",
-        "description": "",
-        "photo": ""
+        "name": "Heidy",
+        "role": "Dev",
+        "description": "Coba",
+        "photo": "6a2179d19c2da.png"
     },
-    "experiences": [],
-    "certificates": [],
-    "social_media": [],
+    "experiences": [
+        {
+            "id": "6a2179e682f5f",
+            "company": "Polinema",
+            "position": "Anggota",
+            "year": "2021",
+            "description": "wasd"
+        },
+        {
+            "id": "6a2179f30015e",
+            "company": "wasd",
+            "position": "wasd",
+            "year": "3121",
+            "description": "wasdawsd\r\n"
+        }
+    ],
+    "certificates": [
+        {
+            "id": "6a217a162fe2d",
+            "name": "FRANKIE STEINLIE",
+            "issuer": "Politeknik Negeri Malang",
+            "file": "6a217a162eab9.png"
+        },
+        {
+            "id": "6a217a22273ee",
+            "name": "wasd",
+            "issuer": "wasd",
+            "file": "6a217a2225e7a.pdf"
+        }
+    ],
+    "social_media": [
+        {
+            "id": "6a217a458f7c5",
+            "platform": "Instagram",
+            "link": "https:\/\/frankie-steinlie.page.gd\/"
+        },
+        {
+            "id": "6a217a4d28a88",
+            "platform": "LinkedIn",
+            "link": "https:\/\/frankie-steinlie.page.gd\/"
+        }
+    ],
     "admin": {
         "password": "password"
     }

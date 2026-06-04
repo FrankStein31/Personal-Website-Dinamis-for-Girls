@@ -56,9 +56,9 @@ function uploadFile($file, $allowed_extensions = ['jpg', 'jpeg', 'png', 'pdf'], 
             return ['success' => false, 'message' => 'Terjadi kesalahan tidak diketahui.'];
     }
 
-    if ($file['size'] > $max_size) {
-        return ['success' => false, 'message' => 'Ukuran file terlalu besar.'];
-    }
+    // if ($file['size'] > $max_size) {
+    //     return ['success' => false, 'message' => 'Ukuran file terlalu besar.'];
+    // }
 
     $file_ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     if (!in_array($file_ext, $allowed_extensions)) {
