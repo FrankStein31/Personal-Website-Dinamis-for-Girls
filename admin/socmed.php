@@ -22,12 +22,12 @@ if ($action === 'delete' && !empty($edit_id)) {
     if ($found) {
         $db_data['socmed'] = $filtered_socmed;
         if (save_db_data($db_data)) {
-            $_SESSION['success_msg'] = 'Tautan media sosial berhasil dihapus!';
+            $_SESSION['success_msg'] = 'Social media link deleted successfully!';
         } else {
-            $_SESSION['error_msg'] = 'Gagal menyimpan perubahan ke database.';
+            $_SESSION['error_msg'] = 'Failed to save changes to the database.';
         }
     } else {
-        $_SESSION['error_msg'] = 'Data media sosial tidak ditemukan.';
+        $_SESSION['error_msg'] = 'Social media entry not found.';
     }
     header("Location: socmed.php");
     exit;
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $icon = trim($_POST['icon']);
     
     if (empty($platform) || empty($url) || empty($icon)) {
-        $_SESSION['error_msg'] = 'Semua field wajib diisi!';
+        $_SESSION['error_msg'] = 'All fields are required!';
     } else {
         if ($action === 'add') {
             $new_socmed = [
@@ -52,11 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $db_data['socmed'][] = $new_socmed;
             
             if (save_db_data($db_data)) {
-                $_SESSION['success_msg'] = 'Media sosial baru berhasil ditambahkan!';
+                $_SESSION['success_msg'] = 'New social media link added successfully!';
                 header("Location: socmed.php");
                 exit;
             } else {
-                $_SESSION['error_msg'] = 'Gagal menyimpan data ke database.';
+                $_SESSION['error_msg'] = 'Failed to save data to the database.';
             }
         } elseif ($action === 'edit' && !empty($edit_id)) {
             $updated = false;
@@ -72,14 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($updated) {
                 if (save_db_data($db_data)) {
-                    $_SESSION['success_msg'] = 'Tautan media sosial berhasil diperbarui!';
+                    $_SESSION['success_msg'] = 'Social media link updated successfully!';
                     header("Location: socmed.php");
                     exit;
                 } else {
-                    $_SESSION['error_msg'] = 'Gagal menyimpan perubahan ke database.';
+                    $_SESSION['error_msg'] = 'Failed to save changes to the database.';
                 }
             } else {
-                $_SESSION['error_msg'] = 'Data media sosial tidak ditemukan.';
+                $_SESSION['error_msg'] = 'Social media entry not found.';
             }
         }
     }
@@ -95,7 +95,7 @@ if ($action === 'edit' && !empty($edit_id)) {
         }
     }
     if (!$edit_s) {
-        $_SESSION['error_msg'] = 'Data media sosial tidak ditemukan.';
+        $_SESSION['error_msg'] = 'Social media entry not found.';
         header("Location: socmed.php");
         exit;
     }
@@ -106,21 +106,21 @@ if ($action === 'edit' && !empty($edit_id)) {
     <!-- Add or Edit Form -->
     <div style="margin-bottom: 25px;">
         <a href="socmed.php" class="file-link" style="font-weight: 600;">
-            <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar
+            <i class="fa-solid fa-arrow-left"></i> Back to List
         </a>
     </div>
 
     <div class="form-card">
         <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--dark); margin-bottom: 25px;">
-            <?= ($action === 'add') ? 'Tambah Media Sosial Baru' : 'Edit Media Sosial' ?>
+            <?= ($action === 'add') ? 'Add New Social Link' : 'Edit Social Link' ?>
         </h2>
         
         <form action="" method="POST" id="socmedForm">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="platformSelect">Platform Populer</label>
+                    <label for="platformSelect">Popular Platforms</label>
                     <select id="platformSelect" class="form-control" onchange="autoFillIcon()">
-                        <option value="">-- Pilih Platform (Opsi Cepat) --</option>
+                        <option value="">-- Select Platform (Quick Fill) --</option>
                         <option value="Instagram" data-icon="fab fa-instagram">Instagram</option>
                         <option value="LinkedIn" data-icon="fab fa-linkedin">LinkedIn</option>
                         <option value="GitHub" data-icon="fab fa-github">GitHub</option>
@@ -134,33 +134,33 @@ if ($action === 'edit' && !empty($edit_id)) {
                 </div>
 
                 <div class="form-group">
-                    <label for="platform">Nama Platform</label>
-                    <input type="text" id="platform" name="platform" class="form-control" value="<?= htmlspecialchars($edit_s ? $edit_s['platform'] : '') ?>" placeholder="Contoh: Instagram" required>
+                    <label for="platform">Platform Name</label>
+                    <input type="text" id="platform" name="platform" class="form-control" value="<?= htmlspecialchars($edit_s ? $edit_s['platform'] : '') ?>" placeholder="e.g. Instagram" required>
                 </div>
             </div>
             
             <div class="form-row">
                 <div class="form-group">
-                    <label for="icon">Class Icon FontAwesome</label>
-                    <input type="text" id="icon" name="icon" class="form-control" value="<?= htmlspecialchars($edit_s ? $edit_s['icon'] : '') ?>" placeholder="Contoh: fab fa-instagram" required>
+                    <label for="icon">FontAwesome Icon Class</label>
+                    <input type="text" id="icon" name="icon" class="form-control" value="<?= htmlspecialchars($edit_s ? $edit_s['icon'] : '') ?>" placeholder="e.g. fab fa-instagram" required>
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
-                        Gunakan class dari <a href="https://fontawesome.com/icons" target="_blank" class="file-link">FontAwesome v6</a>
+                        Use icons class from <a href="https://fontawesome.com/icons" target="_blank" class="file-link">FontAwesome v6</a>
                     </p>
                 </div>
                 
                 <div class="form-group">
-                    <label for="url">URL Tautan Lengkap</label>
-                    <input type="url" id="url" name="url" class="form-control" value="<?= htmlspecialchars($edit_s ? $edit_s['url'] : '') ?>" placeholder="Contoh: https://instagram.com/namauser" required>
+                    <label for="url">Full Profile URL</label>
+                    <input type="url" id="url" name="url" class="form-control" value="<?= htmlspecialchars($edit_s ? $edit_s['url'] : '') ?>" placeholder="e.g. https://instagram.com/username" required>
                 </div>
             </div>
             
             <div style="margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px; display: flex; justify-content: flex-end; gap: 12px;">
                 <a href="socmed.php" class="btn-primary" style="background-color: transparent; border: 1.5px solid var(--primary); color: var(--primary); box-shadow: none; text-decoration: none; display: inline-flex; align-items: center;">
-                    Batal
+                    Cancel
                 </a>
                 <button type="submit" class="btn-primary">
                     <i class="fa-solid fa-floppy-disk"></i>
-                    <span>Simpan Media Sosial</span>
+                    <span>Save Link</span>
                 </button>
             </div>
         </form>
@@ -183,19 +183,19 @@ if ($action === 'edit' && !empty($edit_id)) {
     <div style="display: flex; justify-content: flex-end;">
         <a href="socmed.php?action=add" class="btn-primary" style="text-decoration: none;">
             <i class="fa-solid fa-plus"></i>
-            <span>Tambah Media Sosial</span>
+            <span>Add Social Link</span>
         </a>
     </div>
     
     <div class="table-card">
         <div class="table-header">
-            <h2>Daftar Media Sosial</h2>
+            <h2>Social Links List</h2>
         </div>
         
         <?php if (empty($socmed)): ?>
             <div style="padding: 40px; text-align: center; color: var(--text-muted);">
                 <i class="fa-solid fa-share-nodes" style="font-size: 3rem; color: var(--primary-light); margin-bottom: 15px; display: block;"></i>
-                <p>Belum ada data media sosial. Klik tombol di atas untuk menambahkan.</p>
+                <p>No social media links configured. Click the button above to add one.</p>
             </div>
         <?php else: ?>
             <table class="admin-table">
@@ -204,7 +204,7 @@ if ($action === 'edit' && !empty($edit_id)) {
                         <th style="width: 25%;">Platform</th>
                         <th style="width: 20%; text-align: center;">Icon</th>
                         <th style="width: 40%;">URL</th>
-                        <th style="width: 15%; text-align: center;">Aksi</th>
+                        <th style="width: 15%; text-align: center;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -226,7 +226,7 @@ if ($action === 'edit' && !empty($edit_id)) {
                                     <a href="socmed.php?action=edit&id=<?= $s['id'] ?>" class="btn-icon btn-edit" title="Edit">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="socmed.php?action=delete&id=<?= $s['id'] ?>" class="btn-icon btn-delete" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus media sosial <?= htmlspecialchars(addslashes($s['platform'])) ?>?');">
+                                    <a href="socmed.php?action=delete&id=<?= $s['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete the social link for <?= htmlspecialchars(addslashes($s['platform'])) ?>?');">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </div>

@@ -1,6 +1,6 @@
 {
     "biodata": {
-        "name": "Heidy Stein",
+        "name": "Heidy Yulia",
         "role": "Creative UI\/UX Designer & Web Developer",
         "description": "I am a passionate creator who blends aesthetics with code to build memorable digital experiences. Specializing in elegant frontend interfaces, high-end branding, and robust backend logic. Let's create something beautiful together.",
         "photo": "6a217ff5335a9.png"
@@ -21,20 +21,7 @@
             "description": "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
         }
     ],
-    "certificates": [
-        {
-            "id": "6a217eb1bf1e7",
-            "name": "Advanced UI\/UX Certification",
-            "issuer": "Design Guild International",
-            "file": "6a2180b5d322b.pdf"
-        },
-        {
-            "id": "6a217eb1bf1e9",
-            "name": "Web Application Security Associate",
-            "issuer": "TechAcademy",
-            "file": "6a2180c1572d8.png"
-        }
-    ],
+    "certificates": [],
     "socmed": [
         {
             "id": "6a217eb1bf1ea",
@@ -53,9 +40,24 @@
             "platform": "GitHub",
             "url": "https:\/\/github.com\/username",
             "icon": "fab fa-github"
+        },
+        {
+            "id": "6a218af5b3174",
+            "platform": "Tiktok",
+            "url": "https:\/\/steinliejoki.page.gd\/",
+            "icon": "fab fa-tiktok"
         }
     ],
     "settings": {
         "password": "$2y$12$st.rV3Vo67DaPgs1f12kHOCX34zoglUmUBftGfzB.PA5mawofpxea"
-    }
+    },
+    "portfolio": [
+        {
+            "id": "6a221c57235ee",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": ""
+        }
+    ]
 }

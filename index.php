@@ -8,6 +8,7 @@ $biodata = isset($db_data['biodata']) ? $db_data['biodata'] : [];
 $experiences = isset($db_data['experiences']) ? $db_data['experiences'] : [];
 $certificates = isset($db_data['certificates']) ? $db_data['certificates'] : [];
 $socmed = isset($db_data['socmed']) ? $db_data['socmed'] : [];
+$portfolio = isset($db_data['portfolio']) ? $db_data['portfolio'] : [];
 
 $name = isset($biodata['name']) ? $biodata['name'] : '';
 $role = isset($biodata['role']) ? $biodata['role'] : '';
@@ -15,7 +16,7 @@ $description = isset($biodata['description']) ? $biodata['description'] : '';
 $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -322,7 +323,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
 
         .profile-frame-wrap {
             position: relative;
-            width: 380px;
+            width: 450px;
             aspect-ratio: 1 / 1.13;
             padding: 6px;
             background: #FFFFFF;
@@ -359,8 +360,8 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
         /* Organic blob behind the photo frame */
         .blob-backdrop {
             position: absolute;
-            width: 440px;
-            height: 520px;
+            width: 500px;
+            height: 580px;
             background: linear-gradient(135deg, var(--rose-gold-light) 0%, var(--soft-blush) 100%);
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             z-index: 1;
@@ -659,6 +660,117 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             transform: translateY(-1px);
         }
 
+        /* PORTFOLIO SECTION */
+        #portfolio {
+            background-color: rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 35px;
+            backdrop-filter: blur(12px);
+            box-shadow: var(--glass-shadow);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--rose-gold-light), var(--rose-gold));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(183, 110, 121, 0.14);
+            border-color: rgba(183, 110, 121, 0.3);
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .portfolio-body p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .portfolio-footer {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .btn-portfolio-action {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .btn-portfolio-primary {
+            background-color: var(--rose-gold);
+            color: #FFFFFF;
+            border: none;
+            box-shadow: 0 4px 12px rgba(183, 110, 121, 0.15);
+        }
+
+        .btn-portfolio-primary:hover {
+            background-color: var(--rose-gold-dark);
+            box-shadow: 0 6px 18px rgba(183, 110, 121, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn-portfolio-outline {
+            background-color: transparent;
+            color: var(--rose-gold);
+            border: 1px solid var(--rose-gold);
+        }
+
+        .btn-portfolio-outline:hover {
+            background-color: var(--soft-blush);
+            transform: translateY(-1px);
+        }
+
         /* POP-UP MODAL MULTI-FORMAT */
         .modal-overlay {
             position: fixed;
@@ -852,12 +964,12 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             }
 
             .profile-frame-wrap {
-                width: 300px;
+                width: 360px;
             }
 
             .blob-backdrop {
-                width: 340px;
-                height: 420px;
+                width: 400px;
+                height: 480px;
                 max-width: 110%;
             }
 
@@ -955,12 +1067,12 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             }
 
             .profile-frame-wrap {
-                width: 250px;
+                width: 300px;
             }
 
             .blob-backdrop {
-                width: 290px;
-                height: 350px;
+                width: 340px;
+                height: 410px;
             }
 
             .social-row {
@@ -1007,12 +1119,12 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             }
 
             .profile-frame-wrap {
-                width: 220px;
+                width: 260px;
             }
 
             .blob-backdrop {
-                width: 250px;
-                height: 300px;
+                width: 290px;
+                height: 350px;
             }
 
             .timeline-content {
@@ -1059,12 +1171,15 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 </a>
                 
                 <ul class="nav-links">
-                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#hero">Home</a></li>
                     <?php if (!empty($experiences)): ?>
-                        <li><a href="#experiences">Pengalaman</a></li>
+                        <li><a href="#experiences">Experiences</a></li>
                     <?php endif; ?>
                     <?php if (!empty($certificates)): ?>
-                        <li><a href="#certificates">Sertifikat</a></li>
+                        <li><a href="#certificates">Certificates</a></li>
+                    <?php endif; ?>
+                    <?php if (!empty($portfolio)): ?>
+                        <li><a href="#portfolio">Portfolio</a></li>
                     <?php endif; ?>
                 </ul>
 
@@ -1098,7 +1213,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                     <!-- PROMINENT SOCIAL MEDIA BUTTONS -->
                     <?php if (!empty($socmed)): ?>
                         <div class="social-row">
-                            <span class="social-label">Temukan Saya:</span>
+                            <span class="social-label">Connect with me:</span>
                             <?php foreach ($socmed as $s): ?>
                                 <?php if (!empty($s['url']) && !empty($s['icon'])): ?>
                                     <a href="<?= htmlspecialchars($s['url']) ?>" target="_blank" class="social-btn" title="<?= htmlspecialchars($s['platform']) ?>">
@@ -1135,8 +1250,8 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
         <section id="experiences">
             <div class="container">
                 <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
-                    <h2>Pengalaman Kerja</h2>
-                    <p>Jejak karir profesional dan riwayat kontribusi pekerjaan saya.</p>
+                    <h2>Work Experience</h2>
+                    <p>Explore my professional career path and work history.</p>
                 </div>
                 
                 <div class="timeline">
@@ -1175,8 +1290,8 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
         <section id="certificates">
             <div class="container">
                 <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
-                    <h2>Sertifikasi & Penghargaan</h2>
-                    <p>Validasi kompetensi dan pelatihan profesional yang telah saya selesaikan.</p>
+                    <h2>Certificates & Awards</h2>
+                    <p>Validation of my qualifications and professional achievements.</p>
                 </div>
                 
                 <div class="cert-grid">
@@ -1201,14 +1316,53 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                             <?php if (!empty($cert['file']) && file_exists(__DIR__ . '/files/' . $cert['file'])): ?>
                                 <button class="btn-view-doc" onclick="openDocModal('files/<?= htmlspecialchars($cert['file']) ?>', '<?= htmlspecialchars(addslashes($cert['name'])) ?>', '<?= htmlspecialchars(addslashes($cert['issuer'])) ?>')">
                                     <i class="fa-solid fa-eye"></i>
-                                    <span>Lihat Dokumen</span>
+                                    <span>View Credential</span>
                                 </button>
                             <?php else: ?>
                                 <button class="btn-view-doc" style="background-color: var(--text-muted); cursor: not-allowed; box-shadow: none;" disabled>
                                     <i class="fa-solid fa-triangle-exclamation"></i>
-                                    <span>Dokumen Tidak Tersedia</span>
+                                    <span>Credential Unavailable</span>
                                 </button>
                             <?php endif; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <!-- PORTFOLIO SECTION -->
+    <?php if (!empty($portfolio)): ?>
+        <section id="portfolio">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up" data-aos-duration="1000">
+                    <h2>Featured Projects</h2>
+                    <p>Explore some of the recent projects I've developed and worked on.</p>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <?php foreach ($portfolio as $proj): ?>
+                        <div class="portfolio-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                            <div class="portfolio-body">
+                                <h3><?= htmlspecialchars($proj['title']) ?></h3>
+                                <p><?= nl2br(htmlspecialchars($proj['description'] ?: '')) ?></p>
+                            </div>
+                            
+                            <div class="portfolio-footer">
+                                <?php if (!empty($proj['file']) && file_exists(__DIR__ . '/files/' . $proj['file'])): ?>
+                                    <button class="btn-portfolio-action btn-portfolio-primary" onclick="openDocModal('files/<?= htmlspecialchars($proj['file']) ?>', '<?= htmlspecialchars(addslashes($proj['title'])) ?>', 'Project documentation')">
+                                        <i class="fa-solid fa-file-invoice"></i>
+                                        <span>Documentation</span>
+                                    </button>
+                                <?php endif; ?>
+                                
+                                <?php if (!empty($proj['link'])): ?>
+                                    <a href="<?= htmlspecialchars($proj['link']) ?>" target="_blank" class="btn-portfolio-action btn-portfolio-outline">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        <span>Visit Link</span>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -1224,7 +1378,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 <span><?= !empty($name) ? htmlspecialchars($name) : 'Heidy' ?></span>
             </a>
             <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($name) ?>. All Rights Reserved.</p>
-            <p style="font-size: 0.8rem; opacity: 0.7;"><a href="admin/index.php">Panel Administrator</a>.</p>
+            <p style="font-size: 0.8rem; opacity: 0.7;"><a href="admin/index.php">Administrator Panel</a>.</p>
         </div>
     </footer>
 
@@ -1233,8 +1387,8 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <div class="modal-title-container">
-                    <h3 id="modalDocTitle">Nama Dokumen</h3>
-                    <p id="modalDocIssuer">Penerbit Dokumen</p>
+                    <h3 id="modalDocTitle">Document Preview</h3>
+                    <p id="modalDocIssuer">Document Issuer</p>
                 </div>
                 <button class="modal-close-btn" onclick="hideDocModal()">&times;</button>
             </div>
@@ -1272,7 +1426,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             const bodyElem = document.getElementById('modalDocBody');
             
             titleElem.textContent = docTitle;
-            issuerElem.textContent = "Penerbit: " + docIssuer;
+            issuerElem.textContent = "Issuer: " + docIssuer;
             
             // Get file extension
             const extension = fileUrl.split('.').pop().toLowerCase();
@@ -1286,7 +1440,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 // Render Image full size
                 contentHtml = `<img src="${fileUrl}" alt="${docTitle}">`;
             } else {
-                contentHtml = `<p style="color: var(--charcoal); font-weight: 500;">Format berkas tidak dapat dipreview secara langsung. Silakan hubungi administrator.</p>`;
+                contentHtml = `<p style="color: var(--charcoal); font-weight: 500;">Direct preview is not supported for this file format.</p>`;
             }
             
             bodyElem.innerHTML = contentHtml;

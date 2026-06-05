@@ -60,40 +60,46 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
             <li class="sidebar-item <?= ($active_page == 'biodata.php') ? 'active' : '' ?>">
                 <a href="biodata.php">
                     <i class="fa-solid fa-user-pen"></i>
-                    <span>Biodata</span>
+                    <span>Profile Info</span>
                 </a>
             </li>
             <li class="sidebar-item <?= ($active_page == 'pengalaman.php') ? 'active' : '' ?>">
                 <a href="pengalaman.php">
                     <i class="fa-solid fa-briefcase"></i>
-                    <span>Pengalaman</span>
+                    <span>Experiences</span>
                 </a>
             </li>
             <li class="sidebar-item <?= ($active_page == 'sertifikat.php') ? 'active' : '' ?>">
                 <a href="sertifikat.php">
                     <i class="fa-solid fa-award"></i>
-                    <span>Sertifikat</span>
+                    <span>Certificates</span>
+                </a>
+            </li>
+            <li class="sidebar-item <?= ($active_page == 'portfolio.php') ? 'active' : '' ?>">
+                <a href="portfolio.php">
+                    <i class="fa-solid fa-gem"></i>
+                    <span>Projects Portfolio</span>
                 </a>
             </li>
             <li class="sidebar-item <?= ($active_page == 'socmed.php') ? 'active' : '' ?>">
                 <a href="socmed.php">
                     <i class="fa-solid fa-share-nodes"></i>
-                    <span>Media Sosial</span>
+                    <span>Social Media</span>
                 </a>
             </li>
             <li class="sidebar-item <?= ($active_page == 'pengaturan.php') ? 'active' : '' ?>">
                 <a href="pengaturan.php">
                     <i class="fa-solid fa-gears"></i>
-                    <span>Pengaturan</span>
+                    <span>Settings</span>
                 </a>
             </li>
         </ul>
         
         <div class="sidebar-footer">
-            <form action="logout.php" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin keluar?');">
+            <form action="logout.php" method="POST" onsubmit="return confirm('Are you sure you want to log out?');">
                 <button type="submit" class="btn-logout">
                     <i class="fa-solid fa-right-from-bracket"></i>
-                    <span>Keluar</span>
+                    <span>Logout</span>
                 </button>
             </form>
         </div>
@@ -105,23 +111,26 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
         <div class="header-top">
             <div class="page-title">
                 <?php if ($active_page == 'dashboard.php'): ?>
-                    <h1>Ringkasan Dashboard</h1>
-                    <p>Selamat datang kembali di panel administrasi Anda.</p>
+                    <h1>Dashboard Overview</h1>
+                    <p>Welcome back to your administration panel.</p>
                 <?php elseif ($active_page == 'biodata.php'): ?>
-                    <h1>Edit Biodata</h1>
-                    <p>Perbarui informasi profil profesional Anda.</p>
+                    <h1>Edit Profile Info</h1>
+                    <p>Update your professional biography and details.</p>
                 <?php elseif ($active_page == 'pengalaman.php'): ?>
-                    <h1>Kelola Pengalaman Kerja</h1>
-                    <p>Atur riwayat karir Anda yang akan ditampilkan di timeline.</p>
+                    <h1>Manage Experiences</h1>
+                    <p>Organize your work history and positions.</p>
                 <?php elseif ($active_page == 'sertifikat.php'): ?>
-                    <h1>Kelola Sertifikat</h1>
-                    <p>Upload dan kelola dokumen pencapaian dan sertifikat Anda.</p>
+                    <h1>Manage Certificates</h1>
+                    <p>Upload and manage your certificate credentials.</p>
+                <?php elseif ($active_page == 'portfolio.php'): ?>
+                    <h1>Manage Projects Portfolio</h1>
+                    <p>Upload and organize your project documentation and details.</p>
                 <?php elseif ($active_page == 'socmed.php'): ?>
-                    <h1>Kelola Media Sosial</h1>
-                    <p>Atur tautan media sosial yang aktif di halaman utama.</p>
+                    <h1>Manage Social Media</h1>
+                    <p>Set up your active social links for the website footer.</p>
                 <?php elseif ($active_page == 'pengaturan.php'): ?>
-                    <h1>Pengaturan Akun</h1>
-                    <p>Kelola keamanan dan ganti password administrator.</p>
+                    <h1>Account Settings</h1>
+                    <p>Manage security credentials and update password.</p>
                 <?php endif; ?>
             </div>
             

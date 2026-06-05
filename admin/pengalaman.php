@@ -22,12 +22,12 @@ if ($action === 'delete' && !empty($edit_id)) {
     if ($found) {
         $db_data['experiences'] = $filtered_experiences;
         if (save_db_data($db_data)) {
-            $_SESSION['success_msg'] = 'Pengalaman kerja berhasil dihapus!';
+            $_SESSION['success_msg'] = 'Work experience deleted successfully!';
         } else {
-            $_SESSION['error_msg'] = 'Gagal menyimpan perubahan ke database.';
+            $_SESSION['error_msg'] = 'Failed to save changes to the database.';
         }
     } else {
-        $_SESSION['error_msg'] = 'Data pengalaman tidak ditemukan.';
+        $_SESSION['error_msg'] = 'Experience entry not found.';
     }
     header("Location: pengalaman.php");
     exit;
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description']);
     
     if (empty($company) || empty($position) || empty($year)) {
-        $_SESSION['error_msg'] = 'Perusahaan, Jabatan, dan Tahun wajib diisi!';
+        $_SESSION['error_msg'] = 'Company, Position, and Period/Year are required fields!';
     } else {
         if ($action === 'add') {
             // Create new experience
@@ -55,11 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $db_data['experiences'][] = $new_exp;
             
             if (save_db_data($db_data)) {
-                $_SESSION['success_msg'] = 'Pengalaman kerja baru berhasil ditambahkan!';
+                $_SESSION['success_msg'] = 'New work experience added successfully!';
                 header("Location: pengalaman.php");
                 exit;
             } else {
-                $_SESSION['error_msg'] = 'Gagal menyimpan data ke database.';
+                $_SESSION['error_msg'] = 'Failed to save data to the database.';
             }
         } elseif ($action === 'edit' && !empty($edit_id)) {
             // Edit existing experience
@@ -77,14 +77,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($updated) {
                 if (save_db_data($db_data)) {
-                    $_SESSION['success_msg'] = 'Pengalaman kerja berhasil diperbarui!';
+                    $_SESSION['success_msg'] = 'Work experience updated successfully!';
                     header("Location: pengalaman.php");
                     exit;
                 } else {
-                    $_SESSION['error_msg'] = 'Gagal menyimpan perubahan ke database.';
+                    $_SESSION['error_msg'] = 'Failed to save changes to the database.';
                 }
             } else {
-                $_SESSION['error_msg'] = 'Data pengalaman tidak ditemukan.';
+                $_SESSION['error_msg'] = 'Experience entry not found.';
             }
         }
     }
@@ -100,7 +100,7 @@ if ($action === 'edit' && !empty($edit_id)) {
         }
     }
     if (!$edit_exp) {
-        $_SESSION['error_msg'] = 'Data pengalaman tidak ditemukan.';
+        $_SESSION['error_msg'] = 'Experience entry not found.';
         header("Location: pengalaman.php");
         exit;
     }
@@ -111,45 +111,45 @@ if ($action === 'edit' && !empty($edit_id)) {
     <!-- Add or Edit Form -->
     <div style="margin-bottom: 25px;">
         <a href="pengalaman.php" class="file-link" style="font-weight: 600;">
-            <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar
+            <i class="fa-solid fa-arrow-left"></i> Back to List
         </a>
     </div>
 
     <div class="form-card">
         <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--dark); margin-bottom: 25px;">
-            <?= ($action === 'add') ? 'Tambah Pengalaman Baru' : 'Edit Pengalaman Kerja' ?>
+            <?= ($action === 'add') ? 'Add New Experience' : 'Edit Work Experience' ?>
         </h2>
         
         <form action="" method="POST">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="company">Nama Perusahaan / Organisasi</label>
-                    <input type="text" id="company" name="company" class="form-control" value="<?= htmlspecialchars($edit_exp ? $edit_exp['company'] : '') ?>" placeholder="Contoh: PT. Digital Nusantara" required>
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" name="company" class="form-control" value="<?= htmlspecialchars($edit_exp ? $edit_exp['company'] : '') ?>" placeholder="e.g. Aura Creative Studio" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="position">Jabatan / Posisi</label>
-                    <input type="text" id="position" name="position" class="form-control" value="<?= htmlspecialchars($edit_exp ? $edit_exp['position'] : '') ?>" placeholder="Contoh: Frontend Developer" required>
+                    <label for="position">Job Position / Role</label>
+                    <input type="text" id="position" name="position" class="form-control" value="<?= htmlspecialchars($edit_exp ? $edit_exp['position'] : '') ?>" placeholder="e.g. Lead Frontend Developer" required>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="year">Periode / Tahun</label>
-                <input type="text" id="year" name="year" class="form-control" value="<?= htmlspecialchars($edit_exp ? $edit_exp['year'] : '') ?>" placeholder="Contoh: 2022 - 2024 atau 2023 (6 Bulan)" required>
+                <label for="year">Period / Year</label>
+                <input type="text" id="year" name="year" class="form-control" value="<?= htmlspecialchars($edit_exp ? $edit_exp['year'] : '') ?>" placeholder="e.g. 2024 - Present or 2023 (6 Months)" required>
             </div>
             
             <div class="form-group">
-                <label for="description">Deskripsi Tugas & Pencapaian (Opsional)</label>
-                <textarea id="description" name="description" class="form-control" placeholder="Jelaskan peran, tanggung jawab, dan pencapaian Anda..."><?= htmlspecialchars($edit_exp ? $edit_exp['description'] : '') ?></textarea>
+                <label for="description">Responsibilities & Achievements (Optional)</label>
+                <textarea id="description" name="description" class="form-control" placeholder="Describe your duties, tasks, achievements, or project highlights..."><?= htmlspecialchars($edit_exp ? $edit_exp['description'] : '') ?></textarea>
             </div>
             
             <div style="margin-top: 30px; border-top: 1px solid var(--border); padding-top: 20px; display: flex; justify-content: flex-end; gap: 12px;">
                 <a href="pengalaman.php" class="btn-primary" style="background-color: transparent; border: 1.5px solid var(--primary); color: var(--primary); box-shadow: none; text-decoration: none; display: inline-flex; align-items: center;">
-                    Batal
+                    Cancel
                 </a>
                 <button type="submit" class="btn-primary">
                     <i class="fa-solid fa-floppy-disk"></i>
-                    <span>Simpan Data</span>
+                    <span>Save Experience</span>
                 </button>
             </div>
         </form>
@@ -160,29 +160,29 @@ if ($action === 'edit' && !empty($edit_id)) {
     <div style="display: flex; justify-content: flex-end;">
         <a href="pengalaman.php?action=add" class="btn-primary" style="text-decoration: none;">
             <i class="fa-solid fa-plus"></i>
-            <span>Tambah Pengalaman</span>
+            <span>Add Experience</span>
         </a>
     </div>
     
     <div class="table-card">
         <div class="table-header">
-            <h2>Daftar Riwayat Kerja</h2>
+            <h2>Work Experience History</h2>
         </div>
         
         <?php if (empty($experiences)): ?>
             <div style="padding: 40px; text-align: center; color: var(--text-muted);">
                 <i class="fa-solid fa-folder-open" style="font-size: 3rem; color: var(--primary-light); margin-bottom: 15px; display: block;"></i>
-                <p>Belum ada data pengalaman kerja. Klik tombol di atas untuk menambahkan.</p>
+                <p>No work experience entries recorded yet. Click the button above to add one.</p>
             </div>
         <?php else: ?>
             <table class="admin-table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Perusahaan</th>
-                        <th style="width: 25%;">Posisi</th>
-                        <th style="width: 15%;">Tahun</th>
-                        <th style="width: 20%;">Deskripsi</th>
-                        <th style="width: 15%; text-align: center;">Aksi</th>
+                        <th style="width: 25%;">Company</th>
+                        <th style="width: 25%;">Position</th>
+                        <th style="width: 15%;">Period</th>
+                        <th style="width: 25%;">Description</th>
+                        <th style="width: 10%; text-align: center;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -207,7 +207,7 @@ if ($action === 'edit' && !empty($edit_id)) {
                                     <a href="pengalaman.php?action=edit&id=<?= $exp['id'] ?>" class="btn-icon btn-edit" title="Edit">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="pengalaman.php?action=delete&id=<?= $exp['id'] ?>" class="btn-icon btn-delete" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus pengalaman di <?= htmlspecialchars(addslashes($exp['company'])) ?>?');">
+                                    <a href="pengalaman.php?action=delete&id=<?= $exp['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete experience at <?= htmlspecialchars(addslashes($exp['company'])) ?>?');">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </div>

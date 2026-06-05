@@ -584,6 +584,14 @@ textarea.form-control {
     pointer-events: auto;
 }
 
+/* Responsive Grid layout for Dashboard */
+.admin-grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
 /* Responsive design for admin */
 @media (max-width: 991px) {
     .admin-mobile-header {

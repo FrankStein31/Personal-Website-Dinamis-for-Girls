@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = isset($_POST['password']) ? trim($_POST['password']) : '';
     
     if (empty($password)) {
-        $error = 'Password wajib diisi!';
+        $error = 'Password is required!';
     } else {
         $db_data = get_db_data();
         $hashed_password = isset($db_data['settings']['password']) ? $db_data['settings']['password'] : '';
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: dashboard.php");
             exit;
         } else {
-            $error = 'Password yang Anda masukkan salah!';
+            $error = 'Incorrect password! Please try again.';
         }
     }
 }
@@ -292,7 +292,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <i class="fa-solid fa-lock"></i>
             </div>
             <h1>Admin Login</h1>
-            <p>Masukkan password untuk masuk ke panel admin</p>
+            <p>Enter the password to access the admin panel</p>
         </div>
 
         <?php if (!empty($error)): ?>
@@ -306,13 +306,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label for="password">Password</label>
                 <div class="input-wrapper">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password Anda" required autofocus>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required autofocus>
                     <i class="fa-solid fa-key input-icon"></i>
                 </div>
             </div>
 
             <button type="submit" class="btn-submit">
-                <span>Masuk</span>
+                <span>Login</span>
                 <i class="fa-solid fa-right-to-bracket"></i>
             </button>
         </form>
@@ -320,7 +320,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="back-to-site">
             <a href="../index.php">
                 <i class="fa-solid fa-arrow-left"></i>
-                <span>Kembali ke Website</span>
+                <span>Back to Website</span>
             </a>
         </div>
     </div>

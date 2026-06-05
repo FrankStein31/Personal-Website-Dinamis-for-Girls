@@ -86,7 +86,11 @@ function get_db_data() {
         return [];
     }
     $content = file_get_contents(DB_FILE);
-    return json_decode($content, true) ?: [];
+    $data = json_decode($content, true) ?: [];
+    if (!isset($data['portfolio'])) {
+        $data['portfolio'] = [];
+    }
+    return $data;
 }
 
 function save_db_data($data) {
@@ -94,7 +98,7 @@ function save_db_data($data) {
 }
 
 // File upload helper
-function upload_file($file, $allowed_extensions = ['jpg', 'jpeg', 'png', 'pdf'], $max_size = 2097152) {
+function upload_file($file, $allowed_extensions = ['jpg', 'jpeg', 'png', 'pdf']) {
     if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
         return ['success' => false, 'message' => 'No file uploaded or error occurred.'];
     }
