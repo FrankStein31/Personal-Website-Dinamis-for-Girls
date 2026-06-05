@@ -19,9 +19,86 @@
             "position": "Junior Web Developer",
             "year": "2022 - 2024",
             "description": "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
+        },
+        {
+            "id": "6a217eb1bf1e3",
+            "company": "Universitas Ahmad Dahlan",
+            "position": "Web Designer",
+            "year": "2020 - 2022",
+            "description": "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
+        },
+        {
+            "id": "6a217eb1bf1e4",
+            "company": "Freelancer",
+            "position": "Freelance Web Designer",
+            "year": "2020 - 2024",
+            "description": "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
+        },
+        {
+            "id": "6a217eb1bf1e5",
+            "company": "Freelancer",
+            "position": "Freelance Web Designer",
+            "year": "2020 - 2024",
+            "description": "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
+        },
+        {
+            "id": "6a217eb1bf1e6",
+            "company": "Freelancer",
+            "position": "Freelance Web Designer",
+            "year": "2020 - 2024",
+            "description": "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
         }
     ],
-    "certificates": [],
+    "certificates": [
+        {
+            "id": "6a222273bf89c",
+            "name": "coba",
+            "issuer": "coba",
+            "file": "6a222273bec85.pdf"
+        },
+        {
+            "id": "6a22227c20b0f",
+            "name": "coba",
+            "issuer": "cobaa",
+            "file": "6a22227c1f22e.png"
+        },
+        {
+            "id": "6a2222a41594b",
+            "name": "coba",
+            "issuer": "coba",
+            "file": "6a2222a4143f5.png"
+        },
+        {
+            "id": "6a2222ab05eb5",
+            "name": "FRANKIE STEINLIE",
+            "issuer": "coba",
+            "file": "6a2222ab004a6.pdf"
+        },
+        {
+            "id": "6a222273bf89d",
+            "name": "coba",
+            "issuer": "coba",
+            "file": "6a222273bec85.pdf"
+        },
+        {
+            "id": "6a22227c20b0e",
+            "name": "coba",
+            "issuer": "cobaa",
+            "file": "6a22227c1f22e.png"
+        },
+        {
+            "id": "6a2222a41591b",
+            "name": "coba",
+            "issuer": "coba",
+            "file": "6a2222a4143f5.png"
+        },
+        {
+            "id": "6a2222ab05ef5",
+            "name": "FRANKIE STEINLIE",
+            "issuer": "coba",
+            "file": "6a2222ab004a6.pdf"
+        }
+    ],
     "socmed": [
         {
             "id": "6a217eb1bf1ea",
@@ -53,11 +130,67 @@
     },
     "portfolio": [
         {
-            "id": "6a221c57235ee",
+            "id": "6a221c572351e",
             "title": "Test Project Title",
             "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
             "link": "https:\/\/example.com",
-            "file": ""
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c572352e",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c572253e",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c572354e",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c572353e",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c5723544",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c512355e",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c572350e",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
+        },
+        {
+            "id": "6a221c572352e",
+            "title": "Test Project Title",
+            "description": "This is a test project to verify the portfolio functionality of Heidy Yulia's website.",
+            "link": "https:\/\/example.com",
+            "file": "6a22224b14530.pdf"
         }
     ]
 }
