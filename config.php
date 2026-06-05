@@ -12,58 +12,31 @@ define('UPLOAD_DIR', __DIR__ . '/files/');
 if (!file_exists(DB_FILE)) {
     $defaultData = [
         "biodata" => [
-            "name" => "Heidy Stein",
-            "role" => "Creative UI/UX Designer & Web Developer",
-            "description" => "I am a passionate creator who blends aesthetics with code to build memorable digital experiences. Specializing in elegant frontend interfaces, high-end branding, and robust backend logic. Let's create something beautiful together.",
+            "name" => "",
+            "role" => "",
+            "description" => "",
             "photo" => ""
         ],
-        "experiences" => [
-            [
-                "id" => uniqid(),
-                "company" => "Aura Creative Studio",
-                "position" => "Lead Frontend Developer",
-                "year" => "2024 - Present",
-                "description" => "Crafting immersive, high-end web experiences, interactive portfolios, and digital brand identities using modern technologies."
-            ],
-            [
-                "id" => uniqid(),
-                "company" => "Innovatech Solutions",
-                "position" => "Junior Web Developer",
-                "year" => "2022 - 2024",
-                "description" => "Developed responsive, dynamic web applications with PHP and clean database management system integrations."
-            ]
-        ],
-        "certificates" => [
-            [
-                "id" => uniqid(),
-                "name" => "Advanced UI/UX Certification",
-                "issuer" => "Design Guild International",
-                "file" => ""
-            ],
-            [
-                "id" => uniqid(),
-                "name" => "Web Application Security Associate",
-                "issuer" => "TechAcademy",
-                "file" => ""
-            ]
-        ],
+        "experiences" => [],
+        "certificates" => [],
+        "portfolio" => [],
         "socmed" => [
             [
                 "id" => uniqid(),
                 "platform" => "Instagram",
-                "url" => "https://instagram.com/username",
+                "url" => "",
                 "icon" => "fab fa-instagram"
             ],
             [
                 "id" => uniqid(),
                 "platform" => "LinkedIn",
-                "url" => "https://linkedin.com/in/username",
+                "url" => "",
                 "icon" => "fab fa-linkedin"
             ],
             [
                 "id" => uniqid(),
                 "platform" => "GitHub",
-                "url" => "https://github.com/username",
+                "url" => "",
                 "icon" => "fab fa-github"
             ]
         ],

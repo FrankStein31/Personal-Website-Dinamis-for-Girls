@@ -29,7 +29,7 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
         <button class="admin-mobile-toggle" onclick="toggleSidebar()">
             <i class="fa-solid fa-bars"></i>
         </button>
-        <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--dark); letter-spacing: 0.5px;">Heidy Admin</span>
+        <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--dark); letter-spacing: 0.5px;">Administrator Panel</span>
         <div class="admin-profile" style="padding: 4px 10px; margin: 0; box-shadow: none; border: none; background: transparent;">
             <div class="admin-avatar" style="width: 28px; height: 28px; font-size: 0.8rem; background-color: var(--primary-light); color: var(--primary);">
                 <i class="fa-solid fa-user-tie"></i>
@@ -44,7 +44,7 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
     <aside class="sidebar">
         <div class="sidebar-brand">
             <i class="fa-solid fa-gem"></i>
-            <h2>Heidy Portfolio</h2>
+            <h2>Personal Website</h2>
             <button class="sidebar-close-mobile" onclick="toggleSidebar()" style="display: none; background: none; border: none; font-size: 1.25rem; color: var(--text-muted); cursor: pointer; margin-left: auto;">
                 <i class="fa-solid fa-xmark"></i>
             </button>

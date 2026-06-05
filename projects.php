@@ -541,7 +541,7 @@ $role = isset($biodata['role']) ? $biodata['role'] : '';
             <nav>
                 <a href="index.php" class="logo">
                     <i class="fa-solid fa-gem"></i>
-                    <span><?= !empty($name) ? htmlspecialchars($name) : 'Heidy' ?></span>
+                    <span><?= !empty($name) ? htmlspecialchars($name) : 'Personal Website' ?></span>
                 </a>
                 
                 <ul class="nav-links">
@@ -633,7 +633,7 @@ $role = isset($biodata['role']) ? $biodata['role'] : '';
         <div class="container">
             <a href="index.php" class="logo">
                 <i class="fa-solid fa-gem"></i>
-                <span><?= !empty($name) ? htmlspecialchars($name) : 'Heidy' ?></span>
+                <span><?= !empty($name) ? htmlspecialchars($name) : 'Personal Website' ?></span>
             </a>
             <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($name) ?>. All Rights Reserved.</p>
             <p style="font-size: 0.8rem; opacity: 0.7;"><a href="admin/index.php" style="color: var(--ivory-white); text-decoration: underline;">Administrator Panel</a>.</p>

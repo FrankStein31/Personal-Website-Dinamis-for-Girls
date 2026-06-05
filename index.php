@@ -1349,7 +1349,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             <nav>
                 <a href="#hero" class="logo">
                     <i class="fa-solid fa-gem"></i>
-                    <span><?= !empty($name) ? htmlspecialchars($name) : 'Heidy' ?></span>
+                    <span><?= !empty($name) ? htmlspecialchars($name) : 'Personal Website' ?></span>
                 </a>
                 
                 <ul class="nav-links">
@@ -1412,7 +1412,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                     <div class="profile-frame-wrap">
                         <div class="profile-frame">
                             <?php if (!empty($photo) && file_exists(__DIR__ . '/files/' . $photo)): ?>
-                                <img src="files/<?= htmlspecialchars($photo) ?>" alt="Heidy Portrait">
+                                <img src="files/<?= htmlspecialchars($photo) ?>" alt="Portrait">
                             <?php else: ?>
                                 <!-- Fallback premium illustration if image is missing -->
                                 <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 30% 20%, #FAF0F2 0%, #E8C5C8 100%); color: var(--rose-gold); font-size: 3rem;">
@@ -1611,7 +1611,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
         <div class="container">
             <a href="#hero" class="logo">
                 <i class="fa-solid fa-gem"></i>
-                <span><?= !empty($name) ? htmlspecialchars($name) : 'Heidy' ?></span>
+                <span><?= !empty($name) ? htmlspecialchars($name) : 'Personal Website' ?></span>
             </a>
             <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($name) ?>. All Rights Reserved.</p>
             <p style="font-size: 0.8rem; opacity: 0.7;"><a href="admin/index.php">Administrator Panel</a>.</p>

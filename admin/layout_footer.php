@@ -1,6 +1,6 @@
         <!-- Footer spacing -->
         <footer style="margin-top: 50px; text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 20px;">
-            &copy; <?= date('Y') ?> Heidy Stein Portfolio. All Rights Reserved. Created with PHP Native.
+            &copy; <?= date('Y') ?> Personal Website. All Rights Reserved.
         </footer>
     </main>
 
