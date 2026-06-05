@@ -350,11 +350,13 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: scale 0.5s ease;
+            object-position: center 20%;
+            transform: scale(1.08);
+            transition: transform 0.5s ease;
         }
 
         .profile-frame-wrap:hover img {
-            scale: 1.05;
+            transform: scale(1.15);
         }
 
         /* Organic blob behind the photo frame */
@@ -551,18 +553,32 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             line-height: 1.6;
         }
 
-        /* CERTIFICATES SECTION (GLASSMORPHISM GRID CARD) */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+        /* CERTIFICATES SECTION (PREMIUM CAROUSEL SLIDER) */
+        .cert-carousel-wrapper {
+            position: relative;
+            width: 100%;
         }
 
-        .cert-card {
+        .cert-carousel-container {
+            overflow: hidden;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .cert-carousel-inner {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 100%;
+        }
+
+        .cert-carousel-inner .cert-card {
+            flex: 0 0 calc((100% - 60px) / 3);
+            margin-bottom: 0;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
-            padding: 35px;
+            padding: 25px;
             backdrop-filter: blur(12px);
             box-shadow: var(--glass-shadow);
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -571,6 +587,18 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             justify-content: space-between;
             position: relative;
             overflow: hidden;
+        }
+
+        @media (max-width: 991px) {
+            .cert-carousel-inner .cert-card {
+                flex: 0 0 calc((100% - 30px) / 2);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .cert-carousel-inner .cert-card {
+                flex: 0 0 100%;
+            }
         }
 
         .cert-card::before {
@@ -595,36 +623,79 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             opacity: 1;
         }
 
-        .cert-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--soft-blush);
-            color: var(--rose-gold);
+        /* Certificate Doc Preview Box */
+        .cert-preview-box {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.7);
             border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 24px;
-            transition: rotate 0.5s ease;
+            box-shadow: inset 0 0 20px rgba(183, 110, 121, 0.02);
+            cursor: pointer;
         }
 
-        .cert-card:hover .cert-icon {
-            rotate: 360deg;
+        .cert-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cert-preview-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .cert-preview-box .iframe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+
+        .cert-preview-box .no-preview {
+            font-size: 3rem;
+            color: var(--rose-gold-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cert-card:hover .cert-preview-box img {
+            transform: scale(1.05);
         }
 
         .cert-info h3 {
             font-family: var(--font-heading);
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: var(--charcoal);
             margin-bottom: 8px;
             font-weight: 700;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 2.8em; /* fixed height for alignment */
         }
 
         .cert-info p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -658,6 +729,62 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
             background-color: var(--rose-gold-dark);
             box-shadow: 0 6px 18px rgba(183, 110, 121, 0.25);
             transform: translateY(-1px);
+        }
+
+        /* Controls styling */
+        .cert-carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .cert-nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+            color: var(--rose-gold);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(183, 110, 121, 0.08);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .cert-nav-btn:hover {
+            background-color: var(--rose-gold);
+            color: #FFFFFF;
+            box-shadow: 0 6px 18px rgba(183, 110, 121, 0.25);
+            transform: scale(1.05);
+        }
+
+        .cert-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .cert-dot {
+            width: 24px;
+            height: 5px;
+            border-radius: 3px;
+            background-color: var(--rose-gold-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.4;
+        }
+
+        .cert-dot.active {
+            width: 40px;
+            background-color: var(--rose-gold);
+            opacity: 1;
         }
 
         /* PORTFOLIO SECTION */
@@ -707,6 +834,61 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
 
         .portfolio-card:hover::before {
             opacity: 1;
+        }
+
+        /* Project File Preview Box */
+        .project-preview-box {
+            width: 100%;
+            height: 210px;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 22px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(183, 110, 121, 0.02);
+            cursor: pointer;
+        }
+
+        .project-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-preview-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+        }
+
+        .project-preview-box .iframe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 2;
+        }
+
+        .project-preview-box .no-preview {
+            font-size: 3rem;
+            color: var(--rose-gold-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .portfolio-card:hover .project-preview-box img {
+            transform: scale(1.05);
         }
 
         .portfolio-body h3 {
@@ -1156,7 +1338,7 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
     <svg width="0" height="0" style="position: absolute; pointer-events: none;">
         <defs>
             <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
-                <path d="M 0.5,0.95 C 0.1,0.6 0,0.4 0,0.25 C 0,0.08 0.1,0 0.25,0 C 0.38,0 0.48,0.15 0.5,0.22 C 0.52,0.15 0.62,0 0.75,0 C 0.9,0 1,0.08 1,0.25 C 1,0.4 0.9,0.6 0.5,0.95 Z" />
+                <path d="M 0.5,0.95 C 0.15,0.65 0,0.45 0,0.28 C 0,0.1 0.12,0.02 0.28,0.02 C 0.38,0.02 0.46,0.1 0.5,0.14 C 0.54,0.1 0.62,0.02 0.72,0.02 C 0.88,0.02 1,0.1 1,0.28 C 1,0.45 0.85,0.65 0.5,0.95 Z" />
             </clipPath>
         </defs>
     </svg>
@@ -1294,38 +1476,65 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                     <p>Validation of my qualifications and professional achievements.</p>
                 </div>
                 
-                <div class="cert-grid">
-                    <?php foreach ($certificates as $cert): ?>
-                        <div class="cert-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                            <div class="cert-info">
-                                <div class="cert-icon">
-                                    <i class="fa-solid fa-award"></i>
+                <div class="cert-carousel-wrapper" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="cert-carousel-container">
+                        <div class="cert-carousel-inner">
+                            <?php foreach ($certificates as $cert): ?>
+                                <div class="cert-card">
+                                    <div>
+                                        <div class="cert-preview-box" onclick="openDocModal('files/<?= htmlspecialchars($cert['file']) ?>', '<?= htmlspecialchars(addslashes($cert['name'])) ?>', '<?= htmlspecialchars(addslashes($cert['issuer'])) ?>')">
+                                            <?php if (!empty($cert['file']) && file_exists(__DIR__ . '/files/' . $cert['file'])): 
+                                                $ext = strtolower(pathinfo($cert['file'], PATHINFO_EXTENSION));
+                                                if (in_array($ext, ['jpg', 'jpeg', 'png'])): ?>
+                                                    <img src="files/<?= htmlspecialchars($cert['file']) ?>" alt="<?= htmlspecialchars($cert['name']) ?>">
+                                                <?php elseif ($ext === 'pdf'): ?>
+                                                    <iframe src="files/<?= htmlspecialchars($cert['file']) ?>#page=1&toolbar=0&navpanes=0&scrollbar=0" scrolling="no"></iframe>
+                                                    <div class="iframe-overlay"></div>
+                                                <?php else: ?>
+                                                    <div class="no-preview"><i class="fa-solid fa-file-invoice"></i></div>
+                                                <?php endif; ?>
+                                            <?php else: ?>
+                                                <div class="no-preview"><i class="fa-solid fa-file-circle-exclamation"></i></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="cert-info">
+                                            <?php if (!empty($cert['name'])): ?>
+                                                <h3><?= htmlspecialchars($cert['name']) ?></h3>
+                                            <?php endif; ?>
+                                            <?php if (!empty($cert['issuer'])): ?>
+                                                <p>
+                                                    <i class="fa-solid fa-bookmark"></i>
+                                                    <span><?= htmlspecialchars($cert['issuer']) ?></span>
+                                                </p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php if (!empty($cert['file']) && file_exists(__DIR__ . '/files/' . $cert['file'])): ?>
+                                        <button class="btn-view-doc" onclick="openDocModal('files/<?= htmlspecialchars($cert['file']) ?>', '<?= htmlspecialchars(addslashes($cert['name'])) ?>', '<?= htmlspecialchars(addslashes($cert['issuer'])) ?>')">
+                                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                            <span>VIEW & ZOOM</span>
+                                        </button>
+                                    <?php else: ?>
+                                        <button class="btn-view-doc" style="background-color: var(--text-muted); cursor: not-allowed; box-shadow: none;" disabled>
+                                            <i class="fa-solid fa-triangle-exclamation"></i>
+                                            <span>UNAVAILABLE</span>
+                                        </button>
+                                    <?php endif; ?>
                                 </div>
-                                <?php if (!empty($cert['name'])): ?>
-                                    <h3><?= htmlspecialchars($cert['name']) ?></h3>
-                                <?php endif; ?>
-                                
-                                <?php if (!empty($cert['issuer'])): ?>
-                                    <p>
-                                        <i class="fa-solid fa-bookmark"></i>
-                                        <span><?= htmlspecialchars($cert['issuer']) ?></span>
-                                    </p>
-                                <?php endif; ?>
-                            </div>
-                            
-                            <?php if (!empty($cert['file']) && file_exists(__DIR__ . '/files/' . $cert['file'])): ?>
-                                <button class="btn-view-doc" onclick="openDocModal('files/<?= htmlspecialchars($cert['file']) ?>', '<?= htmlspecialchars(addslashes($cert['name'])) ?>', '<?= htmlspecialchars(addslashes($cert['issuer'])) ?>')">
-                                    <i class="fa-solid fa-eye"></i>
-                                    <span>View Credential</span>
-                                </button>
-                            <?php else: ?>
-                                <button class="btn-view-doc" style="background-color: var(--text-muted); cursor: not-allowed; box-shadow: none;" disabled>
-                                    <i class="fa-solid fa-triangle-exclamation"></i>
-                                    <span>Credential Unavailable</span>
-                                </button>
-                            <?php endif; ?>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+                    
+                    <div class="cert-carousel-controls">
+                        <button class="cert-nav-btn prev" onclick="moveCertSlider(-1)" aria-label="Previous Slide">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <div class="cert-dots"></div>
+                        <button class="cert-nav-btn next" onclick="moveCertSlider(1)" aria-label="Next Slide">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1341,11 +1550,31 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                 </div>
                 
                 <div class="portfolio-grid">
-                    <?php foreach ($portfolio as $proj): ?>
+                    <?php 
+                    $featured_projects = array_slice($portfolio, 0, 3);
+                    foreach ($featured_projects as $proj): 
+                    ?>
                         <div class="portfolio-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                            <div class="portfolio-body">
-                                <h3><?= htmlspecialchars($proj['title']) ?></h3>
-                                <p><?= nl2br(htmlspecialchars($proj['description'] ?: '')) ?></p>
+                            <div>
+                                <div class="project-preview-box" onclick="openDocModal('files/<?= htmlspecialchars($proj['file']) ?>', '<?= htmlspecialchars(addslashes($proj['title'])) ?>', 'Project documentation')">
+                                    <?php if (!empty($proj['file']) && file_exists(__DIR__ . '/files/' . $proj['file'])): 
+                                        $ext = strtolower(pathinfo($proj['file'], PATHINFO_EXTENSION));
+                                        if (in_array($ext, ['jpg', 'jpeg', 'png'])): ?>
+                                            <img src="files/<?= htmlspecialchars($proj['file']) ?>" alt="<?= htmlspecialchars($proj['title']) ?>">
+                                        <?php elseif ($ext === 'pdf'): ?>
+                                            <iframe src="files/<?= htmlspecialchars($proj['file']) ?>#page=1&toolbar=0&navpanes=0&scrollbar=0" scrolling="no"></iframe>
+                                            <div class="iframe-overlay"></div>
+                                        <?php else: ?>
+                                            <div class="no-preview"><i class="fa-solid fa-file-invoice"></i></div>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <div class="no-preview"><i class="fa-solid fa-file-circle-exclamation"></i></div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="portfolio-body">
+                                    <h3><?= htmlspecialchars($proj['title']) ?></h3>
+                                    <p><?= nl2br(htmlspecialchars($proj['description'] ?: '')) ?></p>
+                                </div>
                             </div>
                             
                             <div class="portfolio-footer">
@@ -1365,6 +1594,13 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                             </div>
                         </div>
                     <?php endforeach; ?>
+                </div>
+
+                <div style="display: flex; justify-content: center; margin-top: 50px;" data-aos="fade-up" data-aos-duration="1000">
+                    <a href="projects.php" class="btn-portfolio-action btn-portfolio-primary" style="max-width: 250px; padding: 14px 35px; border-radius: 50px; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(183, 110, 121, 0.25); text-decoration: none;">
+                        <span>View All Projects</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1495,6 +1731,108 @@ $photo = isset($biodata['photo']) ? $biodata['photo'] : '';
                     toggleIcon.className = 'fa-solid fa-bars';
                 }
             });
+        });
+
+        // Certificates horizontal slider implementation
+        let currentCertIndex = 0;
+        
+        function getCardsPerPage() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 992) return 2;
+            return 3;
+        }
+        
+        function moveCertSlider(direction) {
+            const inner = document.querySelector('.cert-carousel-inner');
+            const cards = document.querySelectorAll('.cert-card');
+            if (cards.length === 0) return;
+            
+            const cardsPerPage = getCardsPerPage();
+            const maxIndex = Math.max(0, cards.length - cardsPerPage);
+            
+            currentCertIndex += direction;
+            if (currentCertIndex < 0) currentCertIndex = 0;
+            if (currentCertIndex > maxIndex) currentCertIndex = maxIndex;
+            
+            updateCertSlider();
+        }
+        
+        function updateCertSlider() {
+            const inner = document.querySelector('.cert-carousel-inner');
+            const cards = document.querySelectorAll('.cert-card');
+            if (cards.length === 0) return;
+            
+            const cardsPerPage = getCardsPerPage();
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = 30; // Matches CSS gap
+            const translateVal = currentCertIndex * (cardWidth + gap);
+            
+            inner.style.transform = `translateX(-${translateVal}px)`;
+            
+            // Update dots
+            const dots = document.querySelectorAll('.cert-dot');
+            dots.forEach((dot, i) => {
+                if (i === currentCertIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // Update arrows styling and pointer events
+            const prevBtn = document.querySelector('.cert-nav-btn.prev');
+            const nextBtn = document.querySelector('.cert-nav-btn.next');
+            
+            if (prevBtn && nextBtn) {
+                prevBtn.style.opacity = currentCertIndex === 0 ? '0.3' : '1';
+                prevBtn.style.pointerEvents = currentCertIndex === 0 ? 'none' : 'auto';
+                
+                const maxIndex = Math.max(0, cards.length - cardsPerPage);
+                nextBtn.style.opacity = currentCertIndex === maxIndex ? '0.3' : '1';
+                nextBtn.style.pointerEvents = currentCertIndex === maxIndex ? 'none' : 'auto';
+            }
+        }
+        
+        function initCertSlider() {
+            const container = document.querySelector('.cert-carousel-container');
+            if (!container) return;
+            
+            const inner = document.querySelector('.cert-carousel-inner');
+            const cards = document.querySelectorAll('.cert-card');
+            const dotsContainer = document.querySelector('.cert-dots');
+            if (!dotsContainer) return;
+            
+            dotsContainer.innerHTML = '';
+            const cardsPerPage = getCardsPerPage();
+            const maxIndex = Math.max(0, cards.length - cardsPerPage + 1);
+            
+            const controls = document.querySelector('.cert-carousel-controls');
+            if (cards.length <= cardsPerPage) {
+                if (controls) controls.style.display = 'none';
+                inner.style.transform = 'translateX(0px)';
+                return;
+            } else {
+                if (controls) controls.style.display = 'flex';
+            }
+            
+            for (let i = 0; i < maxIndex; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'cert-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => {
+                    currentCertIndex = i;
+                    updateCertSlider();
+                });
+                dotsContainer.appendChild(dot);
+            }
+            
+            currentCertIndex = 0;
+            updateCertSlider();
+        }
+        
+        // Run initializer
+        window.addEventListener('DOMContentLoaded', initCertSlider);
+        window.addEventListener('resize', () => {
+            initCertSlider();
         });
     </script>
 </body>
