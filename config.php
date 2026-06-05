@@ -92,11 +92,8 @@ function upload_file($file, $allowed_extensions = ['jpg', 'jpeg', 'png', 'pdf'])
     // }
 
     // Double validation on MIME type to be secure
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mime = finfo_file($finfo, $fileTmpPath);
-    if (PHP_VERSION_ID < 80000 && is_resource($finfo)) {
-        finfo_close($finfo);
-    }
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime = $finfo->file($fileTmpPath);
 
     $allowed_mimes = [
         'image/jpeg', 'image/png', 'image/jpg', 'application/pdf'
