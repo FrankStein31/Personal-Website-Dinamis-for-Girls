@@ -220,52 +220,54 @@ if ($action === 'edit' && !empty($edit_id)) {
                 <p>No certificates recorded yet. Click the button above to add one.</p>
             </div>
         <?php else: ?>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th style="width: 35%;">Certificate Title</th>
-                        <th style="width: 30%;">Issuer</th>
-                        <th style="width: 20%;">Document</th>
-                        <th style="width: 15%; text-align: center;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($certificates as $cert): ?>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
                         <tr>
-                            <td style="font-weight: 600; color: var(--dark);">
-                                <?= htmlspecialchars($cert['name']) ?>
-                            </td>
-                            <td>
-                                <?= htmlspecialchars($cert['issuer']) ?>
-                            </td>
-                            <td>
-                                <?php if (!empty($cert['file']) && file_exists(__DIR__ . '/../files/' . $cert['file'])): ?>
-                                    <?php 
-                                        $ext = strtolower(pathinfo($cert['file'], PATHINFO_EXTENSION));
-                                        $isPdf = ($ext === 'pdf');
-                                    ?>
-                                    <button type="button" class="file-link" style="background: none; border: none; cursor: pointer; font-family: inherit; font-size: inherit;" onclick="previewFile('../files/<?= htmlspecialchars($cert['file']) ?>')">
-                                        <i class="fa-solid <?= $isPdf ? 'fa-file-pdf' : 'fa-file-image' ?>"></i>
-                                        <span>Preview</span>
-                                    </button>
-                                <?php else: ?>
-                                    <span style="color: var(--danger); font-size: 0.85rem;"><i class="fa-solid fa-triangle-exclamation"></i> File missing</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <div class="action-buttons" style="justify-content: center;">
-                                    <a href="sertifikat.php?action=edit&id=<?= $cert['id'] ?>" class="btn-icon btn-edit" title="Edit">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="sertifikat.php?action=delete&id=<?= $cert['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete certificate: <?= htmlspecialchars(addslashes($cert['name'])) ?>?');">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <th style="width: 35%;">Certificate Title</th>
+                            <th style="width: 30%;">Issuer</th>
+                            <th style="width: 20%;">Document</th>
+                            <th style="width: 15%; text-align: center;">Actions</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($certificates as $cert): ?>
+                            <tr>
+                                <td style="font-weight: 600; color: var(--dark);">
+                                    <?= htmlspecialchars($cert['name']) ?>
+                                </td>
+                                <td>
+                                    <?= htmlspecialchars($cert['issuer']) ?>
+                                </td>
+                                <td>
+                                    <?php if (!empty($cert['file']) && file_exists(__DIR__ . '/../files/' . $cert['file'])): ?>
+                                        <?php 
+                                            $ext = strtolower(pathinfo($cert['file'], PATHINFO_EXTENSION));
+                                            $isPdf = ($ext === 'pdf');
+                                        ?>
+                                        <button type="button" class="file-link" style="background: none; border: none; cursor: pointer; font-family: inherit; font-size: inherit;" onclick="previewFile('../files/<?= htmlspecialchars($cert['file']) ?>')">
+                                            <i class="fa-solid <?= $isPdf ? 'fa-file-pdf' : 'fa-file-image' ?>"></i>
+                                            <span>Preview</span>
+                                        </button>
+                                    <?php else: ?>
+                                        <span style="color: var(--danger); font-size: 0.85rem;"><i class="fa-solid fa-triangle-exclamation"></i> File missing</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <div class="action-buttons" style="justify-content: center;">
+                                        <a href="sertifikat.php?action=edit&id=<?= $cert['id'] ?>" class="btn-icon btn-edit" title="Edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="sertifikat.php?action=delete&id=<?= $cert['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete certificate: <?= htmlspecialchars(addslashes($cert['name'])) ?>?');">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
     </div>
 <?php endif; ?>

@@ -198,43 +198,47 @@ if ($action === 'edit' && !empty($edit_id)) {
                 <p>No social media links configured. Click the button above to add one.</p>
             </div>
         <?php else: ?>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th style="width: 25%;">Platform</th>
-                        <th style="width: 20%; text-align: center;">Icon</th>
-                        <th style="width: 40%;">URL</th>
-                        <th style="width: 15%; text-align: center;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($socmed as $s): ?>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
                         <tr>
-                            <td style="font-weight: 600; color: var(--dark);">
-                                <?= htmlspecialchars($s['platform']) ?>
-                            </td>
-                            <td style="text-align: center; font-size: 1.2rem; color: var(--primary);">
-                                <i class="<?= htmlspecialchars($s['icon']) ?>"></i>
-                            </td>
-                            <td>
-                                <a href="<?= htmlspecialchars($s['url']) ?>" target="_blank" class="file-link">
-                                    <?= htmlspecialchars($s['url']) ?>
-                                </a>
-                            </td>
-                            <td>
-                                <div class="action-buttons" style="justify-content: center;">
-                                    <a href="socmed.php?action=edit&id=<?= $s['id'] ?>" class="btn-icon btn-edit" title="Edit">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="socmed.php?action=delete&id=<?= $s['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete the social link for <?= htmlspecialchars(addslashes($s['platform'])) ?>?');">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <th style="width: 25%;">Platform</th>
+                            <th style="width: 20%; text-align: center;">Icon</th>
+                            <th style="width: 40%;">URL</th>
+                            <th style="width: 15%; text-align: center;">Actions</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($socmed as $s): ?>
+                            <tr>
+                                <td style="font-weight: 600; color: var(--dark);">
+                                    <?= htmlspecialchars($s['platform']) ?>
+                                </td>
+                                <td>
+                                    <span style="display: block; text-align: center; font-size: 1.2rem; color: var(--primary);">
+                                        <i class="<?= htmlspecialchars($s['icon']) ?>"></i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="<?= htmlspecialchars($s['url']) ?>" target="_blank" class="file-link">
+                                        <?= htmlspecialchars($s['url']) ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="action-buttons" style="justify-content: center;">
+                                        <a href="socmed.php?action=edit&id=<?= $s['id'] ?>" class="btn-icon btn-edit" title="Edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="socmed.php?action=delete&id=<?= $s['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete the social link for <?= htmlspecialchars(addslashes($s['platform'])) ?>?');">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
     </div>
 <?php endif; ?>

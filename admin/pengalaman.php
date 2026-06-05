@@ -175,47 +175,49 @@ if ($action === 'edit' && !empty($edit_id)) {
                 <p>No work experience entries recorded yet. Click the button above to add one.</p>
             </div>
         <?php else: ?>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th style="width: 25%;">Company</th>
-                        <th style="width: 25%;">Position</th>
-                        <th style="width: 15%;">Period</th>
-                        <th style="width: 25%;">Description</th>
-                        <th style="width: 10%; text-align: center;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($experiences as $exp): ?>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
                         <tr>
-                            <td style="font-weight: 600; color: var(--dark);">
-                                <?= htmlspecialchars($exp['company']) ?>
-                            </td>
-                            <td>
-                                <?= htmlspecialchars($exp['position']) ?>
-                            </td>
-                            <td>
-                                <span style="background-color: var(--primary-light); color: var(--primary); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">
-                                    <?= htmlspecialchars($exp['year']) ?>
-                                </span>
-                            </td>
-                            <td style="font-size: 0.85rem; color: var(--text-muted); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                <?= htmlspecialchars($exp['description']) ?>
-                            </td>
-                            <td>
-                                <div class="action-buttons" style="justify-content: center;">
-                                    <a href="pengalaman.php?action=edit&id=<?= $exp['id'] ?>" class="btn-icon btn-edit" title="Edit">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="pengalaman.php?action=delete&id=<?= $exp['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete experience at <?= htmlspecialchars(addslashes($exp['company'])) ?>?');">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <th style="width: 25%;">Company</th>
+                            <th style="width: 25%;">Position</th>
+                            <th style="width: 15%;">Period</th>
+                            <th style="width: 25%;">Description</th>
+                            <th style="width: 10%; text-align: center;">Actions</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($experiences as $exp): ?>
+                            <tr>
+                                <td style="font-weight: 600; color: var(--dark);">
+                                    <?= htmlspecialchars($exp['company']) ?>
+                                </td>
+                                <td>
+                                    <?= htmlspecialchars($exp['position']) ?>
+                                </td>
+                                <td>
+                                    <span style="background-color: var(--primary-light); color: var(--primary); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">
+                                        <?= htmlspecialchars($exp['year']) ?>
+                                    </span>
+                                </td>
+                                <td style="font-size: 0.85rem; color: var(--text-muted); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    <?= htmlspecialchars($exp['description']) ?>
+                                </td>
+                                <td>
+                                    <div class="action-buttons" style="justify-content: center;">
+                                        <a href="pengalaman.php?action=edit&id=<?= $exp['id'] ?>" class="btn-icon btn-edit" title="Edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="pengalaman.php?action=delete&id=<?= $exp['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete experience at <?= htmlspecialchars(addslashes($exp['company'])) ?>?');">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
     </div>
 <?php endif; ?>

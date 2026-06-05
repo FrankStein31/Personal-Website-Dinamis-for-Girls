@@ -1,4 +1,8 @@
 /* admin_style.css - Admin Panel Styling */
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
 :root {
     --primary: #B76E79; /* Rose Gold */
     --primary-light: #F4E3E5;
@@ -34,6 +38,8 @@ body {
     color: var(--text-main);
     display: flex;
     min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Sidebar Styling */
@@ -140,6 +146,7 @@ body {
     flex-grow: 1;
     min-height: 100vh;
     padding: 40px;
+    min-width: 0; /* Prevent horizontal overflow in flex layout */
 }
 
 .header-top {
@@ -379,6 +386,12 @@ textarea.form-control {
     margin-top: 25px;
 }
 
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .table-header {
     padding: 24px;
     border-bottom: 1px solid var(--border);
@@ -467,6 +480,7 @@ textarea.form-control {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    word-break: break-all;
 }
 
 .file-link:hover {
@@ -594,6 +608,10 @@ textarea.form-control {
 
 /* Responsive design for admin */
 @media (max-width: 991px) {
+    body {
+        display: block;
+    }
+
     .admin-mobile-header {
         display: flex;
     }
@@ -649,6 +667,14 @@ textarea.form-control {
     .main-content {
         margin-left: 0;
         padding: 90px 20px 40px 20px;
+        min-width: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .admin-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
     .header-top {
@@ -665,8 +691,7 @@ textarea.form-control {
     }
 
     .table-card {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        overflow: hidden;
     }
 
     .admin-table {
@@ -675,6 +700,11 @@ textarea.form-control {
 }
 
 @media (max-width: 576px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
     .table-header {
         flex-direction: column;
         align-items: stretch;

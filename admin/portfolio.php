@@ -233,57 +233,59 @@ if ($action === 'edit' && !empty($edit_id)) {
                 <p>No projects uploaded yet. Click the button above to add your first project.</p>
             </div>
         <?php else: ?>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th style="width: 25%;">Project Title</th>
-                        <th style="width: 35%;">Description</th>
-                        <th style="width: 15%;">Attachment</th>
-                        <th style="width: 15%;">Link</th>
-                        <th style="width: 10%; text-align: center;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($projects as $p): ?>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
                         <tr>
-                            <td style="font-weight: 600; color: var(--dark);">
-                                <?= htmlspecialchars($p['title']) ?>
-                            </td>
-                            <td style="font-size: 0.9rem; line-height: 1.5;">
-                                <?= htmlspecialchars($p['description'] ?: '-') ?>
-                            </td>
-                            <td>
-                                <?php if (!empty($p['file']) && file_exists(__DIR__ . '/../files/' . $p['file'])): ?>
-                                    <a href="#" class="file-link" onclick="showAdminDoc('../files/<?= htmlspecialchars($p['file']) ?>', '<?= htmlspecialchars(addslashes($p['title'])) ?>'); return false;">
-                                        <i class="fa-solid fa-eye"></i> View File
-                                    </a>
-                                <?php else: ?>
-                                    <span style="color: var(--text-muted); font-size: 0.85rem;">No file</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if (!empty($p['link'])): ?>
-                                    <a href="<?= htmlspecialchars($p['link']) ?>" target="_blank" class="file-link">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit
-                                    </a>
-                                <?php else: ?>
-                                    <span style="color: var(--text-muted); font-size: 0.85rem;">-</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <div class="action-buttons" style="justify-content: center;">
-                                    <a href="portfolio.php?action=edit&id=<?= $p['id'] ?>" class="btn-icon btn-edit" title="Edit">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="portfolio.php?action=delete&id=<?= $p['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete <?= htmlspecialchars(addslashes($p['title'])) ?>?');">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </div>
-                            </td>
+                            <th style="width: 25%;">Project Title</th>
+                            <th style="width: 35%;">Description</th>
+                            <th style="width: 15%;">Attachment</th>
+                            <th style="width: 15%;">Link</th>
+                            <th style="width: 10%; text-align: center;">Actions</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($projects as $p): ?>
+                            <tr>
+                                <td style="font-weight: 600; color: var(--dark);">
+                                    <?= htmlspecialchars($p['title']) ?>
+                                </td>
+                                <td style="font-size: 0.9rem; line-height: 1.5;">
+                                    <?= htmlspecialchars($p['description'] ?: '-') ?>
+                                </td>
+                                <td>
+                                    <?php if (!empty($p['file']) && file_exists(__DIR__ . '/../files/' . $p['file'])): ?>
+                                        <a href="#" class="file-link" onclick="showAdminDoc('../files/<?= htmlspecialchars($p['file']) ?>', '<?= htmlspecialchars(addslashes($p['title'])) ?>'); return false;">
+                                            <i class="fa-solid fa-eye"></i> View File
+                                        </a>
+                                    <?php else: ?>
+                                        <span style="color: var(--text-muted); font-size: 0.85rem;">No file</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if (!empty($p['link'])): ?>
+                                        <a href="<?= htmlspecialchars($p['link']) ?>" target="_blank" class="file-link">
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit
+                                        </a>
+                                    <?php else: ?>
+                                        <span style="color: var(--text-muted); font-size: 0.85rem;">-</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <div class="action-buttons" style="justify-content: center;">
+                                        <a href="portfolio.php?action=edit&id=<?= $p['id'] ?>" class="btn-icon btn-edit" title="Edit">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <a href="portfolio.php?action=delete&id=<?= $p['id'] ?>" class="btn-icon btn-delete" title="Delete" onclick="return confirm('Are you sure you want to delete <?= htmlspecialchars(addslashes($p['title'])) ?>?');">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
     </div>
 <?php endif; ?>

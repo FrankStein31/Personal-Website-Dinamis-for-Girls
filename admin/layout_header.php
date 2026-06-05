@@ -20,7 +20,7 @@ $admin_name = !empty($db_data['biodata']['name']) ? $db_data['biodata']['name'] 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Admin Custom CSS -->
-    <link rel="stylesheet" href="admin_style.css">
+    <link rel="stylesheet" href="admin_style.css?v=<?= filemtime(__DIR__ . '/admin_style.css') ?>">
 </head>
 <body>
 
